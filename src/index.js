@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const showRestaurant = document.querySelector('.restaurant')
     const showRating = document.getElementById('rating-display')
     const showComment = document.getElementById('comment-display')
+    const form = document.getElementById('new-ramen')
+
+
 
     // fetch the rscourse 
     fetch('http://localhost:3000/ramens')
@@ -40,7 +43,18 @@ document.addEventListener('DOMContentLoaded', () => {
         showComment.textContent = ramen.comment
     }
 
-
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        let formData = {
+            name: document.getElementById('new-name').value,
+            restaurant: document.getElementById('new-restaurant').value,
+            image: document.getElementById('new-image').value,
+            rating: document.getElementById('new-rating').value,
+            comment: document.getElementById('new-comment').value
+        }
+        menuDetail(formData)
+        menuDisplay(formData)
+    })
 
 
 }); //END OF PAGE LOADED
